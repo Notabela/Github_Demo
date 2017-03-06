@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kcP-vE-O7S">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kcP-vE-O7S">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -129,7 +129,13 @@
                             <constraint firstItem="uCm-kc-EzB" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="msY-DI-YUO"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="x5q-EH-pP8"/>
+                    <navigationItem key="navigationItem" id="x5q-EH-pP8">
+                        <barButtonItem key="leftBarButtonItem" title="Settings" id="Ilq-RW-y5l">
+                            <connections>
+                                <segue destination="sFO-mu-S2L" kind="presentation" id="hKM-Pu-p65"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="uCm-kc-EzB" id="1fo-Hc-WxK"/>
                     </connections>
@@ -137,6 +143,69 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="513.75" y="-560.91549295774644"/>
+        </scene>
+        <!--Search Settings View Controller-->
+        <scene sceneID="ESh-vI-joa">
+            <objects>
+                <viewController id="a0K-Yd-HWO" customClass="SearchSettingsViewController" customModule="GithubDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jeg-jT-2gB"/>
+                        <viewControllerLayoutGuide type="bottom" id="TpA-pI-SqP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zeD-Vo-TIU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minimum Stars" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9c-Pi-inJ">
+                                <rect key="frame" x="10" y="79" width="114" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="11O-K6-dpr">
+                                <rect key="frame" x="281" y="79" width="29" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="rlA-XA-1i6">
+                                <rect key="frame" x="132" y="74.5" width="141" height="31"/>
+                                <connections>
+                                    <action selector="didChangeStartSlider:" destination="a0K-Yd-HWO" eventType="valueChanged" id="GRj-F5-qQt"/>
+                                </connections>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rlA-XA-1i6" firstAttribute="leading" secondItem="l9c-Pi-inJ" secondAttribute="trailing" constant="10" id="8q7-jg-HzY"/>
+                            <constraint firstItem="l9c-Pi-inJ" firstAttribute="top" secondItem="Jeg-jT-2gB" secondAttribute="bottom" constant="15" id="dms-sS-c3j"/>
+                            <constraint firstAttribute="trailing" secondItem="11O-K6-dpr" secondAttribute="trailing" constant="10" id="edd-jP-zfS"/>
+                            <constraint firstItem="11O-K6-dpr" firstAttribute="leading" secondItem="rlA-XA-1i6" secondAttribute="trailing" constant="10" id="hNQ-9R-EC2"/>
+                            <constraint firstItem="l9c-Pi-inJ" firstAttribute="leading" secondItem="zeD-Vo-TIU" secondAttribute="leading" constant="10" id="kXW-qX-ZYg"/>
+                            <constraint firstItem="rlA-XA-1i6" firstAttribute="centerY" secondItem="l9c-Pi-inJ" secondAttribute="centerY" id="mga-fm-3sj"/>
+                            <constraint firstItem="11O-K6-dpr" firstAttribute="centerY" secondItem="l9c-Pi-inJ" secondAttribute="centerY" id="tHq-2x-5xa"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="bTo-P4-9k4">
+                        <barButtonItem key="leftBarButtonItem" title="Save" id="qra-oP-Axv">
+                            <connections>
+                                <action selector="onSave:" destination="a0K-Yd-HWO" id="mEk-ON-fPv"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="GxP-lp-vuL">
+                            <connections>
+                                <action selector="onCancel:" destination="a0K-Yd-HWO" id="xmt-gK-nfo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="minimumStars" destination="11O-K6-dpr" id="HxF-BU-95p"/>
+                        <outlet property="starsSlider" destination="rlA-XA-1i6" id="hY6-Ps-3VS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tKE-E4-hAK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1941" y="-563"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FpP-oR-azb">
@@ -155,6 +224,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dru-y2-L7C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-197" y="-559"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oA5-xo-QB8">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sFO-mu-S2L" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tn1-se-knb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="a0K-Yd-HWO" kind="relationship" relationship="rootViewController" id="lqg-hC-SWs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qGR-RA-cdh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1223" y="-563"/>
         </scene>
     </scenes>
     <resources>

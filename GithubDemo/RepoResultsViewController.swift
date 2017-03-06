@@ -10,7 +10,7 @@ import UIKit
 import MBProgressHUD
 
 // Main ViewController
-class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SettingsPresentingViewControllerDelegate {
 
     
     @IBOutlet weak var tableView: UITableView!
@@ -52,6 +52,27 @@ class RepoResultsViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return repos?.count ?? 0
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        let navController = segue.destination as! UINavigationController
+        let vc = navController.topViewController as! SearchSettingsViewController
+        vc.settings = searchSettings
+        vc.delegate = self
+    }
+    
+    //Settings Delegate Functions
+    func didCancelSettings()
+    {
+        print("settings were cancelled")
+    }
+    
+    func didSaveSettings(settings: GithubRepoSearchSettings)
+    {
+        self.searchSettings = settings
+        doSearch()
+        print("settings were saved")
     }
 
     // Perform the search.
